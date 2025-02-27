@@ -25,18 +25,15 @@ class DatabaseConfig(BaseModel):
 
 class Settings(BaseSettings):
 	model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(".env.exmaple", ".env"),
         case_sensitive=False,
+		env_nested_delimiter="__",
         env_prefix="APP_CONFIG__",
     )
 	run: RunConfig = RunConfig()
 	api: ApiPrefix = ApiPrefix()
 	db: DatabaseConfig
 
-from pydantic import ValidationError
 
-try:
-    settings = Settings()
-    print(settings.model_dump())  # Print parsed settings
-except ValidationError as e:
-    print("Pydantic Validation Error:", e.json(indent=2))  # Print detailed errors
+settings = Settings()
+
