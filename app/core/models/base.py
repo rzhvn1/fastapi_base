@@ -2,7 +2,7 @@ from sqlalchemy.orm import (
 	DeclarativeBase, Mapped, mapped_column, declared_attr
 )
 
-from app.utils.case_converter import camel_case_to_snake_case
+from utils.case_converter import camel_case_to_snake_case
 
 
 class Base(DeclarativeBase):
